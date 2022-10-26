@@ -1,0 +1,129 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* TYPOGRAPHY */
+@font-face {
+    font-family: poppins;
+    src: url(../fonts/poppins/Poppins-Regular.ttf);
+}
+
+@font-face {
+    font-family: poppins-ex-bold;
+    src: url(../fonts/poppins/Poppins-ExtraBold.ttf);
+}
+
+/* basic */
+html {
+    font-family: poppins, monospace;
+    color: white;
+}
+
+body {
+    background-color: #22252c;
+}
+
+/* header */
+header {
+    height: 145px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background: linear-gradient(-86deg, #33be6d 0%, #0c98b9 100%);
+}
+
+header .nav-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    margin-inline-end: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #33be6d;
+    background-color: #fefefe;
+    cursor: pointer;
+}
+
+.logo {
+    height: 2rem;
+    width: 7.375rem;
+    margin-inline-start: 2rem;
+}
+
+.logo img {
+    height: 100%;
+    width: 100%;
+}
+
+.main-header .main-nav {
+    display: none;
+}
+/* gallery */
+.gallery {
+    width: 95%;
+    margin: 15px auto;
+    background-color: #383b42;
+    border-radius: 20px;
+    padding: 20px 10px;
+}
+/* gallery - search panel */
+.gallery .search-container {
+    width: 100%;
+    position: relative;
+}
+
+.search-container input {
+    width: 100%;
+    border-radius: 50px;
+    font-size: 1em;
+    padding: 0.5rem 0.8rem;
+    color: #fefefe;
+    background-color: #22252c;
+    border: none;
+}
+
+.search-container .search-icon {
+    position: absolute;
+    right: 1rem;
+    top: 0.6rem;
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+    color: #33be6d;
+    cursor: pointer;
+}
+
+.search-container .search-word-container {
+    background-color: #fefefe;
+    opacity: 0.4;
+    border-radius: 50px;
+    margin-top: 15px;
+    width: 85%;
+    padding: 0.3rem 0.5rem;
+}
+
+.search-word-container span {
+    color: black;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.img-container {
+    width: 95%;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px 20px;
+}
+
+.img-container img {
+    width: 100%;
+    border-radius: 10px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}

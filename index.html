@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Memes Maker</title>
+        <link rel="stylesheet" href="css/main.css" />
+        <!-- font awesome -->
+        <script
+            src="https://kit.fontawesome.com/1cf5f9e0b4.js"
+            crossorigin="anonymous"
+        ></script>
+    </head>
+    <body onload="onInit()">
+        <header class="main-header">
+            <div class="logo">
+                <img src="./img/logo.png" alt="" />
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li>Gallery</li>
+                    <li>About</li>
+                </ul>
+            </nav>
+            <button class="nav-btn">☰</button>
+        </header>
+
+        <section class="gallery">
+            <div class="search-container">
+                <input type="text" name="search-txt" placeholder="Search" />
+                <button class="search-icon">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <div class="search-word-container">
+                    <span class="funny">Funny</span>
+                    <span class="animal">Animal</span>
+                    <span class="men">Men</span>
+                    <span class="women">Women</span>
+                    <span class="comic">Comic</span>
+                    <span class="smile">Smile</span>
+                </div>
+                <button class="more-btn">More</button>
+            </div>
+            <div class="img-container"></div>
+        </section>
+        <section class="editor">
+            <div class="canvas-container">
+                <canvas class="canvas" width="300" height="300"></canvas>
+            </div>
+            <div class="control-panel">
+                <input
+                    type="text"
+                    placeholder="New text"
+                    onkeyup="onTyping(this.value)"
+                />
+                <div class="line-panel">
+                    <button class="btn switch-line-btn">🠙🠛</button>
+                    <button class="btn add-line-btn">+</button>
+                    <button class="btn add-line-btn">
+                        <img src="./img/bin.png" alt="" />
+                    </button>
+                </div>
+                <div class="font-panel">
+                    <button class="btn incr-font-btn">A+</button>
+                    <button class="btn decr-font-btn">A-</button>
+                    <button class="btn txt-left-btn">
+                        <img src="./img/txt-left.png" alt="" />
+                    </button>
+                    <button class="btn txt-center-btn">
+                        <img src="./img/txt-center.png" alt="" />
+                    </button>
+                    <button class="btn txt-right-btn">
+                        <img src="./img/txt-right.png" alt="" />
+                    </button>
+                </div>
+                <div class="file-panel">
+                    <button class="share-btn">
+                        <i class="fa-solid fa-share-nodes"></i> Share
+                    </button>
+                    <button class="download-btn">
+                        <img src="./img/downlowd.png" alt="" />
+                        Download
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <script src="js/gallery.controller.js"></script>
+        <script src="js/services/meme.service.js"></script>
+        <script src="js/meme.controller.js"></script>
+    </body>
+</html>
