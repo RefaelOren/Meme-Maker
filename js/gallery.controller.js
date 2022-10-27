@@ -5,7 +5,9 @@ function onInit() {
 }
 
 function renderGallery() {
-    const strHTML = gImgs
+    const imgs = getImgs();
+
+    const strHTML = imgs
         .map(
             (img) =>
                 `
@@ -24,8 +26,20 @@ function renderGallery() {
 
 function onSelectImg(id) {
     setImg(id);
-
     renderMeme();
     document.querySelector('.editor').classList.add('show-editor');
     document.querySelector('.gallery').classList.add('hide-gallery');
+}
+
+function onSetFilterByText(filterBY) {
+    setFilter(filterBY);
+    renderGallery();
+}
+
+function onSetFilterByKeyWord(keyword) {
+    setFilterByKeyWord(keyword);
+    document.querySelector(
+        `.${keyword}`
+    ).style.fontSize = `${gKeywordsFontSize[keyword]}px`;
+    renderGallery();
 }

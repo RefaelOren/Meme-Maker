@@ -29,17 +29,34 @@
         <section class="gallery">
             <div class="search-container">
                 <div class="search-input">
-                    <input type="text" name="search-txt" placeholder="Search" />
+                    <input
+                        type="text"
+                        name="search-txt"
+                        placeholder="Search"
+                        onkeyup="onSetFilterByText(this.value)"
+                    />
                     <button class="search-icon">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </div>
                 <div class="search-word-container">
-                    <span class="funny">Funny</span>
-                    <span class="animal">Animal</span>
-                    <span class="men">Men</span>
-                    <span class="women">Women</span>
-                    <span class="comic">Comic</span>
+                    <span class="funny" onclick="onSetFilterByKeyWord('funny')"
+                        >Funny</span
+                    >
+                    <span
+                        class="animal"
+                        onclick="onSetFilterByKeyWord('animal')"
+                        >Animal</span
+                    >
+                    <span class="men" onclick="onSetFilterByKeyWord('men')"
+                        >Men</span
+                    >
+                    <span class="women" onclick="onSetFilterByKeyWord('women')"
+                        >Women</span
+                    >
+                    <span class="cat" onclick="onSetFilterByKeyWord('cat')"
+                        >Cat</span
+                    >
                 </div>
                 <button class="more-btn">More</button>
             </div>
@@ -56,7 +73,10 @@
                     onkeyup="onTyping(this.value)"
                 />
                 <div class="line-panel">
-                    <button class="btn switch-line-btn">🠙🠛</button>
+                    <button class="btn switch-line-btn">
+                        <img src="./img/errow-up.png" alt="" />
+                        <img src="./img/errow-down.png" alt="" />
+                    </button>
                     <button class="btn add-line-btn" onclick="onAddLine()">
                         +
                     </button>

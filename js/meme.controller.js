@@ -30,7 +30,6 @@ function drawText(text, x, y, size, color, align, stroke) {
     else if (align === 'right') x = gElCanvas.width;
     gCtx.fillText(text, x, y);
     gCtx.strokeText(text, x, y);
-    drewTextOutline(size);
 }
 
 function onTyping(txt) {
@@ -41,11 +40,13 @@ function onTyping(txt) {
 function onChangeColor(color) {
     document.querySelector('.fill-btn').style.color = color;
     setFontColor(color);
+    renderMeme();
 }
 
 function onChangeStroke(color) {
     document.querySelector('.stroke-btn').style.color = color;
     setFontStroke(color);
+    renderMeme();
 }
 
 function onChangeFontSize(diff) {
@@ -61,13 +62,6 @@ function onAlignTxt(align) {
 
 function onAddLine() {
     setNewLine();
-}
-
-function drewTextOutline(size) {
-    gCtx.beginPath();
-    gCtx.lineWidth = 3;
-    gCtx.strokeStyle = 'rgba(255, 255, 255,0.3)';
-    gCtx.strokeRect(2, size / 2, 290, size + 5);
 }
 
 function onDownloadImg(elLink) {

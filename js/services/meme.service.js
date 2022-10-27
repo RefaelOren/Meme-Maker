@@ -3,12 +3,12 @@
 const gImgs = [
     {
         id: 1,
-        url: 'http://127.0.0.1:5500/img/gallery-imgs/1.jpg',
+        url: 'img/gallery-imgs/1.jpg',
         keywords: ['funny', 'cat'],
     },
     {
         id: 2,
-        url: 'http://127.0.0.1:5500/img/gallery-imgs/2.jpg',
+        url: 'img/gallery-imgs/2.jpg',
         keywords: ['cat', 'baby'],
     },
     {
@@ -24,12 +24,12 @@ const gImgs = [
     {
         id: 5,
         url: 'img/gallery-imgs/5.jpg',
-        keywords: ['woman', 'men'],
+        keywords: ['women', 'men'],
     },
     {
         id: 6,
         url: 'img/gallery-imgs/6.jpg',
-        keywords: ['woman', 'comic'],
+        keywords: ['women', 'comic'],
     },
     {
         id: 7,
@@ -54,44 +54,54 @@ const gImgs = [
     {
         id: 11,
         url: 'img/gallery-imgs/11.jpg',
-        keywords: ['woman', 'funny'],
+        keywords: ['women', 'funny'],
     },
     {
         id: 12,
         url: 'img/gallery-imgs/12.jpg',
-        keywords: ['woman', 'funny'],
+        keywords: ['women', 'funny'],
     },
     {
         id: 13,
         url: 'img/gallery-imgs/13.jpg',
-        keywords: ['woman', 'funny'],
+        keywords: ['cat', 'funny'],
     },
     {
         id: 14,
         url: 'img/gallery-imgs/14.jpg',
-        keywords: ['woman', 'funny'],
+        keywords: ['women', 'funny'],
     },
     {
         id: 15,
         url: 'img/gallery-imgs/15.jpg',
-        keywords: ['woman', 'funny'],
+        keywords: ['cat', 'funny'],
     },
     {
         id: 16,
         url: 'img/gallery-imgs/16.jpg',
-        keywords: ['woman', 'funny'],
+        keywords: ['men', 'funny'],
     },
     {
         id: 17,
         url: 'img/gallery-imgs/17.jpg',
-        keywords: ['woman', 'funny'],
+        keywords: ['animal', 'funny'],
     },
     {
         id: 18,
         url: 'img/gallery-imgs/18.jpg',
-        keywords: ['woman', 'funny'],
+        keywords: ['men', 'funny'],
     },
 ];
+
+const gKeywordsFontSize = {
+    funny: 12.8,
+    animal: 12.8,
+    men: 12.8,
+    women: 12.8,
+    cat: 12.8,
+};
+
+let gFilterBy = { txt: '', keyword: '' };
 
 let gMeme = {
     selectedImgId: 1,
@@ -99,7 +109,7 @@ let gMeme = {
     lines: [
         {
             txt: '',
-            size: 30,
+            size: 20,
             align: 'left',
             color: 'white',
             stroke: 'black',
@@ -107,6 +117,25 @@ let gMeme = {
         },
     ],
 };
+
+function getImgs() {
+    let imgs = [];
+    gImgs.forEach((img) => {
+        if (
+            img.keywords[0].includes(gFilterBy.txt.toLowerCase()) ||
+            img.keywords[1].includes(gFilterBy.txt.toLowerCase())
+        )
+            imgs.push(img);
+    });
+
+    if (gFilterBy.keyword) {
+        let filterEdImgs = imgs.filter((img) =>
+            img.keywords.includes(gFilterBy.keyword)
+        );
+        return filterEdImgs;
+    }
+    return imgs;
+}
 
 function getMeme() {
     return gMeme;
@@ -118,7 +147,7 @@ function setImg(id) {
     gMeme.lines = [
         {
             txt: '',
-            size: 35,
+            size: 30,
             align: 'left',
             color: 'white',
             stroke: 'black',
@@ -155,7 +184,7 @@ function setAlignTxt(align) {
 function setNewLine() {
     gMeme.lines.push({
         txt: '',
-        size: 20,
+        size: 30,
         align: 'left',
         color: 'white',
         cords: { x: 10, y: 285 },
@@ -164,4 +193,13 @@ function setNewLine() {
 
 function saveMemeText(txt) {
     gMeme.lines[gMeme.selectedLineIdx].txt = txt;
+}
+
+function setFilter(filterBy) {
+    gFilterBy.txt = filterBy;
+}
+
+function setFilterByKeyWord(keyword) {
+    gFilterBy.keyword = keyword;
+    gKeywordsFontSize[keyword] += 5;
 }
