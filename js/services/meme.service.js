@@ -3,12 +3,12 @@
 const gImgs = [
     {
         id: 1,
-        url: 'img/gallery-imgs/1.jpg',
+        url: 'http://127.0.0.1:5500/img/gallery-imgs/1.jpg',
         keywords: ['funny', 'cat'],
     },
     {
         id: 2,
-        url: 'img/gallery-imgs/2.jpg',
+        url: 'http://127.0.0.1:5500/img/gallery-imgs/2.jpg',
         keywords: ['cat', 'baby'],
     },
     {
@@ -41,6 +41,56 @@ const gImgs = [
         url: 'img/gallery-imgs/8.jpg',
         keywords: ['woman', 'funny'],
     },
+    {
+        id: 9,
+        url: 'img/gallery-imgs/9.jpg',
+        keywords: ['woman', 'funny'],
+    },
+    {
+        id: 10,
+        url: 'img/gallery-imgs/10.jpg',
+        keywords: ['woman', 'funny'],
+    },
+    {
+        id: 11,
+        url: 'img/gallery-imgs/11.jpg',
+        keywords: ['woman', 'funny'],
+    },
+    {
+        id: 12,
+        url: 'img/gallery-imgs/12.jpg',
+        keywords: ['woman', 'funny'],
+    },
+    {
+        id: 13,
+        url: 'img/gallery-imgs/13.jpg',
+        keywords: ['woman', 'funny'],
+    },
+    {
+        id: 14,
+        url: 'img/gallery-imgs/14.jpg',
+        keywords: ['woman', 'funny'],
+    },
+    {
+        id: 15,
+        url: 'img/gallery-imgs/15.jpg',
+        keywords: ['woman', 'funny'],
+    },
+    {
+        id: 16,
+        url: 'img/gallery-imgs/16.jpg',
+        keywords: ['woman', 'funny'],
+    },
+    {
+        id: 17,
+        url: 'img/gallery-imgs/17.jpg',
+        keywords: ['woman', 'funny'],
+    },
+    {
+        id: 18,
+        url: 'img/gallery-imgs/18.jpg',
+        keywords: ['woman', 'funny'],
+    },
 ];
 
 let gMeme = {
@@ -49,9 +99,11 @@ let gMeme = {
     lines: [
         {
             txt: '',
-            size: 20,
+            size: 30,
             align: 'left',
             color: 'white',
+            stroke: 'black',
+            cords: { x: 10, y: 5 },
         },
     ],
 };
@@ -62,7 +114,17 @@ function getMeme() {
 
 function setImg(id) {
     gMeme.selectedImgId = id;
-    gMeme.lines = [{ txt: '', size: 25, align: 'left', color: 'white' }];
+    gMeme.selectedLineIdx = 0;
+    gMeme.lines = [
+        {
+            txt: '',
+            size: 35,
+            align: 'left',
+            color: 'white',
+            stroke: 'black',
+            cords: { x: 10, y: 50 },
+        },
+    ];
 }
 
 function getImgById(id) {
@@ -74,4 +136,32 @@ function setLineText(txt) {
     gMeme.lines[gMeme.selectedLineIdx].txt = txt;
 }
 
-function createImgs() {}
+function setFontColor(color) {
+    gMeme.lines[gMeme.selectedLineIdx].color = color;
+}
+
+function setFontStroke(color) {
+    gMeme.lines[gMeme.selectedLineIdx].stroke = color;
+}
+
+function setFontSize(diff) {
+    gMeme.lines[gMeme.selectedLineIdx].size += diff;
+}
+
+function setAlignTxt(align) {
+    gMeme.lines[gMeme.selectedLineIdx].align = align;
+}
+
+function setNewLine() {
+    gMeme.lines.push({
+        txt: '',
+        size: 20,
+        align: 'left',
+        color: 'white',
+        cords: { x: 10, y: 285 },
+    });
+}
+
+function saveMemeText(txt) {
+    gMeme.lines[gMeme.selectedLineIdx].txt = txt;
+}

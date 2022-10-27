@@ -22,8 +22,10 @@ function renderGallery() {
     document.querySelector('.img-container').innerHTML = strHTML;
 }
 
-function onSelectImg(imgId) {
-    console.log(imgId);
-    setImg(imgId);
+function onSelectImg(id) {
+    setImg(id);
+
     renderMeme();
+    document.querySelector('.editor').classList.add('show-editor');
+    document.querySelector('.gallery').classList.add('hide-gallery');
 }

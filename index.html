@@ -28,17 +28,18 @@
 
         <section class="gallery">
             <div class="search-container">
-                <input type="text" name="search-txt" placeholder="Search" />
-                <button class="search-icon">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
+                <div class="search-input">
+                    <input type="text" name="search-txt" placeholder="Search" />
+                    <button class="search-icon">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
                 <div class="search-word-container">
                     <span class="funny">Funny</span>
                     <span class="animal">Animal</span>
                     <span class="men">Men</span>
                     <span class="women">Women</span>
                     <span class="comic">Comic</span>
-                    <span class="smile">Smile</span>
                 </div>
                 <button class="more-btn">More</button>
             </div>
@@ -51,36 +52,87 @@
             <div class="control-panel">
                 <input
                     type="text"
-                    placeholder="New text"
+                    placeholder="New text ..."
                     onkeyup="onTyping(this.value)"
                 />
                 <div class="line-panel">
                     <button class="btn switch-line-btn">🠙🠛</button>
-                    <button class="btn add-line-btn">+</button>
-                    <button class="btn add-line-btn">
+                    <button class="btn add-line-btn" onclick="onAddLine()">
+                        +
+                    </button>
+                    <button class="btn clr-canvas-btn">
                         <img src="./img/bin.png" alt="" />
                     </button>
                 </div>
                 <div class="font-panel">
-                    <button class="btn incr-font-btn">A+</button>
-                    <button class="btn decr-font-btn">A-</button>
-                    <button class="btn txt-left-btn">
+                    <button
+                        class="btn incr-font-btn"
+                        onclick="onChangeFontSize(1)"
+                    >
+                        A+
+                    </button>
+                    <button
+                        class="btn decr-font-btn"
+                        onclick="onChangeFontSize(-1)"
+                    >
+                        A-
+                    </button>
+                    <button
+                        class="btn txt-left-btn"
+                        id="left"
+                        onclick="onAlignTxt(this.id)"
+                    >
                         <img src="./img/txt-left.png" alt="" />
                     </button>
-                    <button class="btn txt-center-btn">
+                    <button
+                        class="btn txt-center-btn"
+                        id="center"
+                        onclick="onAlignTxt(this.id)"
+                    >
                         <img src="./img/txt-center.png" alt="" />
                     </button>
                     <button class="btn txt-right-btn">
-                        <img src="./img/txt-right.png" alt="" />
+                        <img
+                            src="./img/txt-right.png"
+                            alt=""
+                            id="right"
+                            onclick="onAlignTxt(this.id)"
+                        />
+                    </button>
+                    <select name="impact" id="" class="btn">
+                        <option value="value1">IMPACT</option>
+                        <option value="value2">value2</option>
+                    </select>
+                    <button class="btn stroke-btn paint-btn">
+                        S
+                        <input
+                            type="color"
+                            class="color"
+                            onchange="onChangeStroke(this.value)"
+                        />
+                    </button>
+                    <button class="btn paint-btn fill-btn">
+                        <i class="fa-solid fa-palette"></i>
+                        <input
+                            type="color"
+                            class="color"
+                            onchange="onChangeColor(this.value)"
+                        />
                     </button>
                 </div>
                 <div class="file-panel">
-                    <button class="share-btn">
+                    <button class="btn share-btn">
                         <i class="fa-solid fa-share-nodes"></i> Share
                     </button>
-                    <button class="download-btn">
+                    <button class="btn download-btn">
                         <img src="./img/downlowd.png" alt="" />
-                        Download
+                        <a
+                            href="#"
+                            class="btn"
+                            onclick="onDownloadImg(this)"
+                            download="my-img.jpg"
+                            >Download</a
+                        >
                     </button>
                 </div>
             </div>
