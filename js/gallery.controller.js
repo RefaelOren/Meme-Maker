@@ -31,6 +31,11 @@ function onSelectImg(id) {
     document.querySelector('.gallery').classList.add('hide-gallery');
 }
 
+function onHideEditor() {
+    document.querySelector('.editor').classList.remove('show-editor');
+    document.querySelector('.gallery').classList.remove('hide-gallery');
+}
+
 function onSetFilterByText(filterBY) {
     setFilter(filterBY);
     renderGallery();
@@ -52,4 +57,9 @@ function onToggleNav() {
 function onHideNav() {
     document.querySelector('.main-nav').style.transform = 'translateY(-120%)';
     document.querySelector('.screen').style.transform = 'translateX(-120%)';
+}
+
+function getRandomImg() {
+    let randomId = getRandomInt(1, 18);
+    onSelectImg(randomId);
 }

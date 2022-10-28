@@ -21,7 +21,7 @@
 
             <nav class="main-nav">
                 <ul>
-                    <li>Gallery</li>
+                    <li onclick="onHideEditor()">Gallery</li>
                     <li>Memes</li>
                 </ul>
             </nav>
@@ -60,7 +60,9 @@
                         >Cat</span
                     >
                 </div>
-                <button class="more-btn">More</button>
+                <button class="more-btn" onclick="getRandomImg()">
+                    Random
+                </button>
             </div>
             <div class="img-container"></div>
         </section>
@@ -160,8 +162,9 @@
             </div>
         </section>
 
-        <script src="js/gallery.controller.js"></script>
         <script src="js/services/meme.service.js"></script>
+        <script src="js/services/util.service.js"></script>
+        <script src="js/gallery.controller.js"></script>
         <script src="js/meme.controller.js"></script>
     </body>
 </html>
