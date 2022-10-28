@@ -14,7 +14,7 @@ function renderGallery() {
                     <img
                         src=${img.url}
                         onclick="onSelectImg(this.id)"
-                        alt=""
+                        alt="meme"
                         id="${img.id}"
                     />
     
@@ -42,4 +42,14 @@ function onSetFilterByKeyWord(keyword) {
         `.${keyword}`
     ).style.fontSize = `${gKeywordsFontSize[keyword]}px`;
     renderGallery();
+}
+
+function onToggleNav() {
+    document.querySelector('.main-nav').style.transform = 'translateY(0)';
+    document.querySelector('.screen').style.transform = 'translateX(0)';
+}
+
+function onHideNav() {
+    document.querySelector('.main-nav').style.transform = 'translateY(-120%)';
+    document.querySelector('.screen').style.transform = 'translateX(-120%)';
 }

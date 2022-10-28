@@ -13,17 +13,19 @@
         ></script>
     </head>
     <body onload="onInit()">
+        <div class="screen" onclick="onHideNav()"></div>
         <header class="main-header">
             <div class="logo">
                 <img src="./img/logo.png" alt="" />
             </div>
+
             <nav class="main-nav">
                 <ul>
                     <li>Gallery</li>
-                    <li>About</li>
+                    <li>Memes</li>
                 </ul>
             </nav>
-            <button class="nav-btn">☰</button>
+            <button class="nav-btn" onclick="onToggleNav()">☰</button>
         </header>
 
         <section class="gallery">
