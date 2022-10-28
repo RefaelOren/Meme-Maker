@@ -109,9 +109,10 @@ let gMeme = {
     lines: [
         {
             txt: '',
-            size: 20,
+            size: 35,
             align: 'left',
             color: 'white',
+            font: 'poppins',
             stroke: 'black',
             cords: { x: 10, y: 5 },
         },
@@ -147,9 +148,10 @@ function setImg(id) {
     gMeme.lines = [
         {
             txt: '',
-            size: 30,
+            size: 35,
             align: 'left',
             color: 'white',
+            font: 'poppins-ex-bold',
             stroke: 'black',
             cords: { x: 10, y: 50 },
         },
@@ -187,6 +189,7 @@ function setNewLine() {
         size: 30,
         align: 'left',
         color: 'white',
+        font: 'poppins-ex-bold',
         cords: { x: 10, y: 285 },
     });
 }
@@ -202,4 +205,8 @@ function setFilter(filterBy) {
 function setFilterByKeyWord(keyword) {
     gFilterBy.keyword = keyword;
     gKeywordsFontSize[keyword] += 5;
+}
+
+function setFont(font) {
+    gMeme.lines[gMeme.selectedLineIdx].font = font;
 }

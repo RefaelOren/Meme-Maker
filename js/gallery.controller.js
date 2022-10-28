@@ -34,6 +34,8 @@ function onSelectImg(id) {
 function onHideEditor() {
     document.querySelector('.editor').classList.remove('show-editor');
     document.querySelector('.gallery').classList.remove('hide-gallery');
+    document.querySelector('.main-nav').style.transform = 'translateY(-120%)';
+    document.querySelector('.screen').style.transform = 'translateX(-120%)';
 }
 
 function onSetFilterByText(filterBY) {

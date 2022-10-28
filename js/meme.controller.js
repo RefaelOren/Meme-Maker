@@ -13,18 +13,19 @@ function renderMeme() {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
 
         const lines = meme.lines;
-        lines.forEach(({ txt, size, cords, align, color, stroke }) => {
-            drawText(txt, cords.x, cords.y, size, color, align, stroke);
+        lines.forEach(({ txt, size, cords, align, color, font, stroke }) => {
+            drawText(txt, cords.x, cords.y, size, color, font, align, stroke);
+            drawText(txt, 10, 270, size, color, font, align, stroke);
         });
     };
     img.src = currImg.url;
 }
 
-function drawText(text, x, y, size, color, align, stroke) {
+function drawText(text, x, y, size, color, font, align, stroke) {
     gCtx.lineWidth = 2;
     gCtx.strokeStyle = stroke;
     gCtx.fillStyle = color;
-    gCtx.font = `${size}px poppins-ex-bold`;
+    gCtx.font = `${size}px ${font}`;
     gCtx.textAlign = align;
     if (align === 'center') x = gElCanvas.width / 2;
     else if (align === 'right') x = gElCanvas.width;
@@ -57,6 +58,11 @@ function onChangeFontSize(diff) {
 function onAlignTxt(align) {
     console.log('hey', align);
     setAlignTxt(align);
+    renderMeme();
+}
+
+function onSelectFont(font) {
+    setFont(font);
     renderMeme();
 }
 

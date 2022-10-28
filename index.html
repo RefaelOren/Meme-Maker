@@ -123,9 +123,12 @@
                             onclick="onAlignTxt(this.id)"
                         />
                     </button>
-                    <select name="impact" id="" class="btn">
-                        <option value="value1">IMPACT</option>
-                        <option value="value2">value2</option>
+                    <select class="btn" onchange="onSelectFont(this.value)">
+                        <option value="poppins-ex-bold">Poppins</option>
+                        <option value="ariel">Ariel</option>
+                        <option value="monospace">Monospace</option>
+                        <option value="serif">Serif</option>
+                        <option value="cambria">Cambria</option>
                     </select>
                     <button class="btn stroke-btn paint-btn">
                         S
@@ -145,8 +148,9 @@
                     </button>
                 </div>
                 <div class="file-panel">
-                    <button class="btn share-btn">
-                        <i class="fa-solid fa-share-nodes"></i> Share
+                    <button class="btn share-btn" onclick="uploadImg()">
+                        <i class="fa-solid fa-share-nodes"></i>Share
+                        <div class="share-link"></div>
                     </button>
                     <button class="btn download-btn">
                         <img src="./img/downlowd.png" alt="" />
@@ -162,6 +166,7 @@
             </div>
         </section>
 
+        <script src="js/services/uplowd.service.js"></script>
         <script src="js/services/meme.service.js"></script>
         <script src="js/services/util.service.js"></script>
         <script src="js/gallery.controller.js"></script>
