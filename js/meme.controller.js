@@ -1,6 +1,7 @@
 'use strict';
 let gElCanvas;
 let gCtx;
+let gIsSaving = false;
 
 gElCanvas = document.querySelector('.canvas');
 gCtx = gElCanvas.getContext('2d');
@@ -9,16 +10,23 @@ function renderMeme() {
     const meme = getMeme();
     const currImg = getImgById(meme.selectedImgId);
     const img = new Image();
+    img.src = currImg.url;
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
 
         const lines = meme.lines;
+        let currLineIdx = meme.selectedLineIdx;
         lines.forEach(({ txt, size, cords, align, color, font, stroke }) => {
             drawText(txt, cords.x, cords.y, size, color, font, align, stroke);
-            drawText(txt, 10, 270, size, color, font, align, stroke);
         });
+        if (gIsSaving) return;
+        drawTextOutLine(
+            lines[currLineIdx].cords.x,
+            lines[currLineIdx].cords.y,
+            lines[currLineIdx].size
+        );
     };
-    img.src = currImg.url;
+    document.querySelector('.control-panel input').focus();
 }
 
 function drawText(text, x, y, size, color, font, align, stroke) {
@@ -33,9 +41,43 @@ function drawText(text, x, y, size, color, font, align, stroke) {
     gCtx.strokeText(text, x, y);
 }
 
+function drawTextOutLine(x, y, fontSize) {
+    gCtx.strokeStyle = 'yellow';
+    gCtx.lineWidth = 2;
+    gCtx.strokeRect(x - 3, y - fontSize, gElCanvas.width - 15, fontSize + 5);
+}
+
 function onTyping(txt) {
     setLineText(txt);
     renderMeme();
+}
+
+function onAddLine() {
+    setNewLine();
+    document.querySelector('.control-panel input').value = '';
+    renderMeme();
+}
+
+function onSwitchLine() {
+    console.log('hey');
+    setCurrLine();
+    renderMeme();
+}
+
+function onClearLine() {
+    setClearLine();
+    document.querySelector('.control-panel input').value = '';
+    renderMeme();
+}
+
+function onSaveMeme() {
+    gIsSaving = true;
+    console.log(gIsSaving);
+    renderMeme();
+    setTimeout(() => {
+        saveMeme();
+        gIsSaving = false;
+    }, 500);
 }
 
 function onChangeColor(color) {
@@ -64,10 +106,6 @@ function onAlignTxt(align) {
 function onSelectFont(font) {
     setFont(font);
     renderMeme();
-}
-
-function onAddLine() {
-    setNewLine();
 }
 
 function onDownloadImg(elLink) {

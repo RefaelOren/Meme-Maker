@@ -106,13 +106,14 @@ let gFilterBy = { txt: '', keyword: '' };
 let gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
+    url: '',
     lines: [
         {
             txt: '',
             size: 35,
             align: 'left',
             color: 'white',
-            font: 'poppins',
+            font: 'impact',
             stroke: 'black',
             cords: { x: 10, y: 5 },
         },
@@ -121,6 +122,7 @@ let gMeme = {
 
 function getImgs() {
     let imgs = [];
+    // filter by txt
     gImgs.forEach((img) => {
         if (
             img.keywords[0].includes(gFilterBy.txt.toLowerCase()) ||
@@ -128,7 +130,7 @@ function getImgs() {
         )
             imgs.push(img);
     });
-
+    // filter by keywords
     if (gFilterBy.keyword) {
         let filterEdImgs = imgs.filter((img) =>
             img.keywords.includes(gFilterBy.keyword)
@@ -145,13 +147,14 @@ function getMeme() {
 function setImg(id) {
     gMeme.selectedImgId = id;
     gMeme.selectedLineIdx = 0;
+
     gMeme.lines = [
         {
             txt: '',
-            size: 35,
+            size: 30,
             align: 'left',
             color: 'white',
-            font: 'poppins-ex-bold',
+            font: 'impact',
             stroke: 'black',
             cords: { x: 10, y: 50 },
         },
@@ -165,6 +168,18 @@ function getImgById(id) {
 
 function setLineText(txt) {
     gMeme.lines[gMeme.selectedLineIdx].txt = txt;
+}
+
+function setCurrLine() {
+    if (gMeme.selectedLineIdx === 0) {
+        gMeme.selectedLineIdx = gMeme.lines.length - 1;
+        return;
+    }
+    gMeme.selectedLineIdx -= 1;
+}
+
+function setClearLine() {
+    gMeme.lines[gMeme.selectedLineIdx].txt = '';
 }
 
 function setFontColor(color) {
@@ -184,18 +199,21 @@ function setAlignTxt(align) {
 }
 
 function setNewLine() {
+    if (gMeme.selectedLineIdx === 2) return;
     gMeme.lines.push({
         txt: '',
         size: 30,
         align: 'left',
         color: 'white',
-        font: 'poppins-ex-bold',
+        font: 'impact',
         cords: { x: 10, y: 285 },
+        stroke: 'black',
     });
-}
-
-function saveMemeText(txt) {
-    gMeme.lines[gMeme.selectedLineIdx].txt = txt;
+    gMeme.selectedLineIdx += 1;
+    if (gMeme.lines.length > 2) {
+        gMeme.lines[gMeme.selectedLineIdx].cords.x = 10;
+        gMeme.lines[gMeme.selectedLineIdx].cords.y = 175;
+    }
 }
 
 function setFilter(filterBy) {
@@ -209,4 +227,10 @@ function setFilterByKeyWord(keyword) {
 
 function setFont(font) {
     gMeme.lines[gMeme.selectedLineIdx].font = font;
+}
+
+function saveMeme() {
+    let image = gElCanvas.toDataURL('image/jpeg');
+    gMeme.url = image;
+    gMemes.push(gMeme);
 }

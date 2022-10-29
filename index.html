@@ -13,22 +13,27 @@
         ></script>
     </head>
     <body onload="onInit()">
+        <!-- mobile nav screen -->
         <div class="screen" onclick="onHideNav()"></div>
+        <!-- header -->
         <header class="main-header">
             <div class="logo">
                 <img src="./img/logo.png" alt="" />
             </div>
-
+            <!-- navbar -->
             <nav class="main-nav">
                 <ul>
-                    <li onclick="onHideEditor()">Gallery</li>
-                    <li>Memes</li>
+                    <li class="li-gallery active" onclick="onHideEditor()">
+                        Gallery
+                    </li>
+                    <li class="li-memes" onclick="onShowSavedMems()">Memes</li>
                 </ul>
             </nav>
             <button class="nav-btn" onclick="onToggleNav()">☰</button>
         </header>
-
+        <!-- image gallery -->
         <section class="gallery">
+            <!-- search panel -->
             <div class="search-container">
                 <div class="search-input">
                     <input
@@ -66,10 +71,16 @@
             </div>
             <div class="img-container"></div>
         </section>
+        <!-- saved memes gallery -->
+        <section class="saved-memes">
+            <div class="memes-container img-container"></div>
+        </section>
+        <!-- meme editor -->
         <section class="editor">
             <div class="canvas-container">
                 <canvas class="canvas" width="300" height="300"></canvas>
             </div>
+            <!-- meme editor control panel -->
             <div class="control-panel">
                 <input
                     type="text"
@@ -77,15 +88,21 @@
                     onkeyup="onTyping(this.value)"
                 />
                 <div class="line-panel">
-                    <button class="btn switch-line-btn">
+                    <button
+                        class="btn switch-line-btn"
+                        onclick="onSwitchLine()"
+                    >
                         <img src="./img/errow-up.png" alt="" />
                         <img src="./img/errow-down.png" alt="" />
                     </button>
                     <button class="btn add-line-btn" onclick="onAddLine()">
                         +
                     </button>
-                    <button class="btn clr-canvas-btn">
+                    <button class="btn clr-line-btn" onclick="onClearLine()">
                         <img src="./img/bin.png" alt="" />
+                    </button>
+                    <button onclick="onSaveMeme()" class="btn save-btn">
+                        <i class="fa-solid fa-floppy-disk"></i>
                     </button>
                 </div>
                 <div class="font-panel">
@@ -124,11 +141,12 @@
                         />
                     </button>
                     <select class="btn" onchange="onSelectFont(this.value)">
-                        <option value="poppins-ex-bold">Poppins</option>
-                        <option value="ariel">Ariel</option>
-                        <option value="monospace">Monospace</option>
-                        <option value="serif">Serif</option>
-                        <option value="cambria">Cambria</option>
+                        <option value="impact">IMPACT</option>
+                        <option value="poppins-ex-bold">POPPINS</option>
+                        <option value="ariel">ARIEL</option>
+                        <option value="monospace">MONOSPACE</option>
+                        <option value="serif">SERIF</option>
+                        <option value="cambria">CAMBRIA</option>
                     </select>
                     <button class="btn stroke-btn paint-btn">
                         S
@@ -168,8 +186,10 @@
 
         <script src="js/services/uplowd.service.js"></script>
         <script src="js/services/meme.service.js"></script>
+        <script src="js/services/memes.service.js"></script>
         <script src="js/services/util.service.js"></script>
         <script src="js/gallery.controller.js"></script>
         <script src="js/meme.controller.js"></script>
+        <script src="js/memes.controller.js"></script>
     </body>
 </html>

@@ -15,6 +15,11 @@
     src: url(../fonts/poppins/Poppins-ExtraBold.ttf);
 }
 
+@font-face {
+    font-family: impact;
+    src: url(../fonts/Impact/impact.ttf);
+}
+
 /* basic */
 html {
     font-family: poppins, monospace;
@@ -52,6 +57,15 @@ header .nav-btn {
     color: #33be6d;
     background-color: #fefefe;
     cursor: pointer;
+    transition: 0.5s;
+    -webkit-box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.47);
+    box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.47);
+}
+
+header .nav-btn:hover {
+    transform: scale(1.2);
+    background-color: #37c4aa;
+    color: white;
 }
 
 .logo {
@@ -80,6 +94,11 @@ header .nav-btn {
         transition: 0.8s;
         z-index: 5;
     }
+
+    .main-header .main-nav.show-nav {
+        transform: translateY(0);
+    }
+
     .main-nav ul {
         width: 100%;
         list-style: none;
@@ -226,7 +245,12 @@ header .nav-btn {
     }
 
     .main-nav ul li:hover {
-        transform: scale(1.2);
+        transform: scale(1.5);
+    }
+
+    .main-nav ul li.active {
+        transform: scale(1.5);
+        color: #14726d;
     }
 
     .nav-btn {
@@ -360,8 +384,12 @@ canvas {
     background: linear-gradient(-38deg, #42eb5c 0%, #37b34a 100%);
 }
 
-.line-panel .clr-canvas-btn {
+.line-panel .clr-line-btn {
     background: linear-gradient(-38deg, #cf1d37 0%, #cf1d37 1%, #f05036 100%);
+}
+
+.line-panel .save-btn {
+    background-color: orange;
 }
 
 .control-panel .font-panel {
@@ -500,4 +528,20 @@ canvas {
     .editor .control-panel {
         height: 550px;
     }
+}
+
+/* saved memes gallery */
+
+.saved-memes {
+    width: 100%;
+    height: calc(100% - 80px);
+    background-color: #22252c;
+    position: absolute;
+    top: 90px;
+    transform: translateY(-120%);
+    transition: 0.8s;
+}
+
+.show-memes {
+    transform: translateY(0);
 }

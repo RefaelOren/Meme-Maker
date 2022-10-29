@@ -24,18 +24,23 @@ function renderGallery() {
     document.querySelector('.img-container').innerHTML = strHTML;
 }
 
-function onSelectImg(id) {
-    setImg(id);
+function onSelectImg(id, url) {
+    setImg(id, url);
     renderMeme();
     document.querySelector('.editor').classList.add('show-editor');
     document.querySelector('.gallery').classList.add('hide-gallery');
+    document.querySelector('.saved-memes').classList.remove('show-memes');
 }
 
 function onHideEditor() {
     document.querySelector('.editor').classList.remove('show-editor');
     document.querySelector('.gallery').classList.remove('hide-gallery');
-    document.querySelector('.main-nav').style.transform = 'translateY(-120%)';
+    document.querySelector('.main-nav').classList.remove('show-nav');
     document.querySelector('.screen').style.transform = 'translateX(-120%)';
+    document.querySelector('.control-panel input').value = '';
+    document.querySelector('.saved-memes').classList.remove('show-memes');
+    document.querySelector('.li-gallery').classList.add('active');
+    document.querySelector('.li-memes').classList.remove('active');
 }
 
 function onSetFilterByText(filterBY) {
@@ -52,13 +57,23 @@ function onSetFilterByKeyWord(keyword) {
 }
 
 function onToggleNav() {
-    document.querySelector('.main-nav').style.transform = 'translateY(0)';
+    document.querySelector('.main-nav').classList.add('show-nav');
     document.querySelector('.screen').style.transform = 'translateX(0)';
 }
 
 function onHideNav() {
-    document.querySelector('.main-nav').style.transform = 'translateY(-120%)';
+    document.querySelector('.main-nav').classList.remove('show-nav');
     document.querySelector('.screen').style.transform = 'translateX(-120%)';
+}
+
+function onShowSavedMems() {
+    document.querySelector('.saved-memes').classList.add('show-memes');
+    document.querySelector('.li-gallery').classList.remove('active');
+    document.querySelector('.li-memes').classList.add('active');
+    document.querySelector('.main-nav').classList.remove('show-nav');
+    document.querySelector('.screen').style.transform = 'translateX(-120%)';
+    document.querySelector('.editor').classList.remove('show-editor');
+    renderSavedMemes();
 }
 
 function getRandomImg() {
