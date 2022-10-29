@@ -26,7 +26,6 @@ function renderMeme() {
             lines[currLineIdx].size
         );
     };
-    document.querySelector('.control-panel input').focus();
 }
 
 function drawText(text, x, y, size, color, font, align, stroke) {
@@ -56,23 +55,26 @@ function onAddLine() {
     setNewLine();
     document.querySelector('.control-panel input').value = '';
     renderMeme();
+    focusOnText();
 }
 
 function onSwitchLine() {
-    console.log('hey');
     setCurrLine();
+    document.querySelector('.control-panel input').value =
+        gMeme.lines[gMeme.selectedLineIdx].txt;
     renderMeme();
+    focusOnText();
 }
 
 function onClearLine() {
     setClearLine();
     document.querySelector('.control-panel input').value = '';
     renderMeme();
+    focusOnText();
 }
 
 function onSaveMeme() {
     gIsSaving = true;
-    console.log(gIsSaving);
     renderMeme();
     setTimeout(() => {
         saveMeme();
@@ -109,6 +111,24 @@ function onSelectFont(font) {
 }
 
 function onDownloadImg(elLink) {
-    const imgContent = gElCanvas.toDataURL('image/jpeg'); //
-    elLink.href = imgContent;
+    gIsSaving = true;
+    renderMeme();
+    setTimeout(() => {
+        const imgContent = gElCanvas.toDataURL('image/jpeg'); //
+        elLink.href = imgContent;
+        gIsSaving = false;
+    }, 500);
+}
+
+function onUploadImg() {
+    gIsSaving = true;
+    renderMeme();
+    setTimeout(() => {
+        gIsSaving = false;
+    }, 500);
+    uploadImg();
+}
+
+function focusOnText() {
+    document.querySelector('.control-panel input').focus();
 }

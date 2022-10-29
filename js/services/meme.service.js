@@ -147,7 +147,6 @@ function getMeme() {
 function setImg(id) {
     gMeme.selectedImgId = id;
     gMeme.selectedLineIdx = 0;
-
     gMeme.lines = [
         {
             txt: '',
@@ -230,7 +229,11 @@ function setFont(font) {
 }
 
 function saveMeme() {
-    let image = gElCanvas.toDataURL('image/jpeg');
+    let image = gElCanvas.toDataURL(`image/png`);
     gMeme.url = image;
-    gMemes.push(gMeme);
+    let savedMeme = JSON.parse(JSON.stringify(gMeme));
+    gMemes.unshift(savedMeme);
+
+    console.log(gMemes);
+    saveToStorage(STORAGE_KEY, gMemes);
 }

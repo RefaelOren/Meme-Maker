@@ -24,12 +24,13 @@ function renderGallery() {
     document.querySelector('.img-container').innerHTML = strHTML;
 }
 
-function onSelectImg(id, url) {
-    setImg(id, url);
-    renderMeme();
+function onSelectImg(id) {
+    setImg(id);
     document.querySelector('.editor').classList.add('show-editor');
     document.querySelector('.gallery').classList.add('hide-gallery');
     document.querySelector('.saved-memes').classList.remove('show-memes');
+    focusOnText();
+    renderMeme();
 }
 
 function onHideEditor() {

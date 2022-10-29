@@ -1,4 +1,5 @@
 'use strict';
+let gIsMeme = false;
 
 function renderSavedMemes() {
     const memes = getMemes();
@@ -8,7 +9,7 @@ function renderSavedMemes() {
                 `
                     <img
                         src=${meme.url}
-                        onclick="onSelectImg(this.id)"
+                        onclick="onSelectMeme(this.id)"
                         alt="meme"
                         id="${meme.id}"
                     />
@@ -17,3 +18,5 @@ function renderSavedMemes() {
         .join('');
     document.querySelector('.memes-container').innerHTML = strHTML;
 }
+
+function onSelectMeme(id) {}
