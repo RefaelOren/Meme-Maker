@@ -47,6 +47,9 @@
                     </button>
                 </div>
                 <div class="search-word-container">
+                    <span class="all" onclick="onSetFilterByKeyWord('all')"
+                        >All</span
+                    >
                     <span class="funny" onclick="onSetFilterByKeyWord('funny')"
                         >Funny</span
                     >
@@ -64,6 +67,12 @@
                     <span class="cat" onclick="onSetFilterByKeyWord('cat')"
                         >Cat</span
                     >
+                    <span class="dog" onclick="onSetFilterByKeyWord('dog')"
+                        >Dog</span
+                    >
+                    <span class="anima" onclick="onSetFilterByKeyWord('anima')"
+                        >Anima</span
+                    >
                 </div>
                 <button class="more-btn" onclick="getRandomImg()">
                     Random
@@ -73,7 +82,7 @@
         </section>
         <!-- saved memes gallery -->
         <section class="saved-memes">
-            <div class="memes-container img-container"></div>
+            <div class="memes-container"></div>
         </section>
         <!-- meme editor -->
         <section class="editor">
@@ -153,7 +162,7 @@
                         <input
                             type="color"
                             class="color"
-                            onchange="onChangeStroke(this.value)"
+                            oninput="onChangeStroke(this.value)"
                         />
                     </button>
                     <button class="btn paint-btn fill-btn">
@@ -161,13 +170,14 @@
                         <input
                             type="color"
                             class="color"
-                            onchange="onChangeColor(this.value)"
+                            oninput="onChangeColor(this.value)"
                         />
                     </button>
                 </div>
                 <div class="file-panel">
                     <button class="btn share-btn" onclick="onUploadImg()">
-                        <i class="fa-solid fa-share-nodes"></i>Share
+                        <i class="fa-solid fa-share-nodes"></i
+                        ><span>Share</span>
                         <div class="share-link"></div>
                     </button>
                     <button class="btn download-btn">
@@ -183,14 +193,14 @@
                 </div>
             </div>
         </section>
-
+        <div class="msg-container"></div>
         <script src="js/services/storage.service.js"></script>
         <script src="js/services/uplowd.service.js"></script>
         <script src="js/services/meme.service.js"></script>
-        <script src="js/services/memes.service.js"></script>
+        <script src="js/services/saved.memes.service.js"></script>
         <script src="js/services/util.service.js"></script>
         <script src="js/gallery.controller.js"></script>
         <script src="js/meme.controller.js"></script>
-        <script src="js/memes.controller.js"></script>
+        <script src="js/saved.memes.controller.js"></script>
     </body>
 </html>

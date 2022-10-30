@@ -29,7 +29,7 @@ const gImgs = [
     {
         id: 6,
         url: 'img/gallery-imgs/6.jpg',
-        keywords: ['women', 'comic'],
+        keywords: ['women', 'anima'],
     },
     {
         id: 7,
@@ -39,7 +39,7 @@ const gImgs = [
     {
         id: 8,
         url: 'img/gallery-imgs/8.jpg',
-        keywords: ['woman', 'funny'],
+        keywords: ['woman', 'dog'],
     },
     {
         id: 9,
@@ -59,7 +59,7 @@ const gImgs = [
     {
         id: 12,
         url: 'img/gallery-imgs/12.jpg',
-        keywords: ['women', 'funny'],
+        keywords: ['women', 'dog'],
     },
     {
         id: 13,
@@ -74,7 +74,7 @@ const gImgs = [
     {
         id: 15,
         url: 'img/gallery-imgs/15.jpg',
-        keywords: ['cat', 'funny'],
+        keywords: ['cat', 'anima'],
     },
     {
         id: 16,
@@ -99,6 +99,8 @@ const gKeywordsFontSize = {
     men: 12.8,
     women: 12.8,
     cat: 12.8,
+    dog: 12.8,
+    anima: 12.8,
 };
 
 let gFilterBy = { txt: '', keyword: '' };
@@ -131,7 +133,7 @@ function getImgs() {
             imgs.push(img);
     });
     // filter by keywords
-    if (gFilterBy.keyword) {
+    if (gFilterBy.keyword && gFilterBy.keyword !== 'all') {
         let filterEdImgs = imgs.filter((img) =>
             img.keywords.includes(gFilterBy.keyword)
         );
@@ -149,15 +151,22 @@ function setImg(id) {
     gMeme.selectedLineIdx = 0;
     gMeme.lines = [
         {
-            txt: '',
+            txt: 'Text here...',
             size: 30,
-            align: 'left',
+            align: 'center',
             color: 'white',
             font: 'impact',
             stroke: 'black',
             cords: { x: 10, y: 50 },
         },
     ];
+    if (gIsRandomImg) {
+        let currLine = gMeme.lines[0];
+        currLine.txt = makeLorem(2);
+        currLine.size = getRandomInt(20, 35);
+        currLine.color = getRandomColor();
+        currLine.stroke = getRandomColor();
+    }
 }
 
 function getImgById(id) {
@@ -195,6 +204,7 @@ function setFontSize(diff) {
 
 function setAlignTxt(align) {
     gMeme.lines[gMeme.selectedLineIdx].align = align;
+    console.log(gMeme.lines[gMeme.selectedLineIdx]);
 }
 
 function setNewLine() {
@@ -221,6 +231,7 @@ function setFilter(filterBy) {
 
 function setFilterByKeyWord(keyword) {
     gFilterBy.keyword = keyword;
+    if (gKeywordsFontSize[keyword] > 25) return;
     gKeywordsFontSize[keyword] += 5;
 }
 

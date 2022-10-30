@@ -35,7 +35,7 @@ function drawText(text, x, y, size, color, font, align, stroke) {
     gCtx.font = `${size}px ${font}`;
     gCtx.textAlign = align;
     if (align === 'center') x = gElCanvas.width / 2;
-    else if (align === 'right') x = gElCanvas.width;
+    else if (align === 'right') x = gElCanvas.width - 10;
     gCtx.fillText(text, x, y);
     gCtx.strokeText(text, x, y);
 }
@@ -80,6 +80,7 @@ function onSaveMeme() {
         saveMeme();
         gIsSaving = false;
     }, 500);
+    showMsg('Meme saved');
 }
 
 function onChangeColor(color) {
@@ -127,8 +128,18 @@ function onUploadImg() {
         gIsSaving = false;
         uploadImg();
     }, 500);
+    document.querySelector('.share-btn span').innerText = 'Share now';
 }
 
 function focusOnText() {
     document.querySelector('.control-panel input').focus();
+}
+
+function showMsg(msg) {
+    const elMsg = document.querySelector('.msg-container');
+    elMsg.innerText = msg;
+    elMsg.classList.add('show-msg');
+    setTimeout(() => {
+        elMsg.classList.remove('show-msg');
+    }, 1000);
 }

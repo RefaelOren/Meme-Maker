@@ -1,5 +1,7 @@
 'use strict';
 
+let gIsRandomImg = false;
+
 function onInit() {
     renderGallery();
 }
@@ -29,6 +31,7 @@ function onSelectImg(id) {
     document.querySelector('.editor').classList.add('show-editor');
     document.querySelector('.gallery').classList.add('hide-gallery');
     document.querySelector('.saved-memes').classList.remove('show-memes');
+    document.querySelector('.li-gallery').classList.remove('active');
     focusOnText();
     renderMeme();
 }
@@ -74,10 +77,14 @@ function onShowSavedMems() {
     document.querySelector('.main-nav').classList.remove('show-nav');
     document.querySelector('.screen').style.transform = 'translateX(-120%)';
     document.querySelector('.editor').classList.remove('show-editor');
+    document.querySelector('.gallery').classList.add('hide-gallery');
     renderSavedMemes();
 }
 
 function getRandomImg() {
+    document.querySelector('.li-gallery').classList.remove('active');
     let randomId = getRandomInt(1, 18);
+    gIsRandomImg = true;
     onSelectImg(randomId);
+    gIsRandomImg = false;
 }
