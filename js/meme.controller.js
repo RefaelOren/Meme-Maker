@@ -125,8 +125,8 @@ function onUploadImg() {
     renderMeme();
     setTimeout(() => {
         gIsSaving = false;
+        uploadImg();
     }, 500);
-    uploadImg();
 }
 
 function focusOnText() {
