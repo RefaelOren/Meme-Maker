@@ -4,92 +4,92 @@ const gImgs = [
     {
         id: 1,
         url: 'img/gallery-imgs/1.jpg',
-        keywords: ['funny', 'cat'],
+        keywords: ['funny', 'men'],
     },
     {
         id: 2,
         url: 'img/gallery-imgs/2.jpg',
-        keywords: ['cat', 'baby'],
+        keywords: ['animal', 'dog'],
     },
     {
         id: 3,
         url: 'img/gallery-imgs/3.jpg',
-        keywords: ['animal', 'baby'],
+        keywords: ['dog', 'baby'],
     },
     {
         id: 4,
         url: 'img/gallery-imgs/4.jpg',
-        keywords: ['animal', 'men'],
+        keywords: ['animal', 'cat'],
     },
     {
         id: 5,
         url: 'img/gallery-imgs/5.jpg',
-        keywords: ['women', 'men'],
+        keywords: ['baby', 'funny'],
     },
     {
         id: 6,
         url: 'img/gallery-imgs/6.jpg',
-        keywords: ['women', 'anima'],
+        keywords: ['men', 'funny'],
     },
     {
         id: 7,
         url: 'img/gallery-imgs/7.jpg',
-        keywords: ['smile', 'comic'],
+        keywords: ['funny', 'baby'],
     },
     {
         id: 8,
         url: 'img/gallery-imgs/8.jpg',
-        keywords: ['woman', 'dog'],
+        keywords: ['men', 'movies'],
     },
     {
         id: 9,
         url: 'img/gallery-imgs/9.jpg',
-        keywords: ['woman', 'funny'],
+        keywords: ['baby', 'funny'],
     },
     {
         id: 10,
         url: 'img/gallery-imgs/10.jpg',
-        keywords: ['woman', 'funny'],
+        keywords: ['men', 'funny'],
     },
     {
         id: 11,
         url: 'img/gallery-imgs/11.jpg',
-        keywords: ['women', 'funny'],
+        keywords: ['men', 'funny'],
     },
     {
         id: 12,
         url: 'img/gallery-imgs/12.jpg',
-        keywords: ['women', 'dog'],
+        keywords: ['men', 'funny'],
     },
     {
         id: 13,
         url: 'img/gallery-imgs/13.jpg',
-        keywords: ['cat', 'funny'],
+        keywords: ['man', 'movies'],
     },
     {
         id: 14,
         url: 'img/gallery-imgs/14.jpg',
-        keywords: ['women', 'funny'],
+        keywords: ['men', 'movies'],
     },
     {
         id: 15,
         url: 'img/gallery-imgs/15.jpg',
-        keywords: ['cat', 'anima'],
+        keywords: ['men', 'funny'],
     },
     {
         id: 16,
         url: 'img/gallery-imgs/16.jpg',
-        keywords: ['men', 'funny'],
+        keywords: ['movies', 'funny'],
     },
     {
         id: 17,
         url: 'img/gallery-imgs/17.jpg',
-        keywords: ['animal', 'funny'],
+        keywords: ['men', 'funny'],
     },
     {
         id: 18,
         url: 'img/gallery-imgs/18.jpg',
-        keywords: ['men', 'funny'],
+        keywords: ['movies', 'funny'],
     },
 ];
 
@@ -97,10 +97,10 @@ const gKeywordsFontSize = {
     funny: 12.8,
     animal: 12.8,
     men: 12.8,
-    women: 12.8,
+    movies: 12.8,
     cat: 12.8,
     dog: 12.8,
-    anima: 12.8,
+    baby: 12.8,
 };
 
 let gFilterBy = { txt: '', keyword: '' };
@@ -212,7 +212,7 @@ function setNewLine() {
     gMeme.lines.push({
         txt: '',
         size: 30,
-        align: 'left',
+        align: 'center',
         color: 'white',
         font: 'impact',
         cords: { x: 10, y: 285 },
@@ -244,7 +244,5 @@ function saveMeme() {
     gMeme.url = image;
     let savedMeme = JSON.parse(JSON.stringify(gMeme));
     gMemes.unshift(savedMeme);
-
-    console.log(gMemes);
     saveToStorage(STORAGE_KEY, gMemes);
 }

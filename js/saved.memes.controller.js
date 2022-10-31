@@ -7,13 +7,16 @@ function renderSavedMemes() {
     const strHTML = memes
         .map(
             (meme) =>
-                `
-                    <img
-                        src=${meme.url}
-                        onclick="onEditMeme(this.id)"
-                        alt="meme"
-                        id="${meme.selectedImgId}"
-                    />
+                `<div class="saved-meme-wrapper">
+                <img
+                    src=${meme.url}
+                    alt="meme"
+                />
+                <div class="edit-screen">
+                   <span onclick="onEditMeme(${meme.selectedImgId})">edit</span>
+                   <span onclick="onDeleteMeme(${meme.selectedImgId})">delete</span>
+                </div>
+            </div>    
        `
         )
         .join('');
@@ -28,4 +31,12 @@ function onEditMeme(id) {
     document.querySelector('.gallery').classList.add('hide-gallery');
     focusOnText();
     renderMeme();
+}
+
+function onDeleteMeme(id) {
+    console.log('hey');
+    console.log(gMemes);
+    updateSavedMemes(id);
+    renderSavedMemes();
+    showMsg('Meme deleted');
 }
