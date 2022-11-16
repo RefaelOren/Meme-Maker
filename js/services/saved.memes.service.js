@@ -2,7 +2,7 @@
 
 const STORAGE_KEY = 'memesDB';
 
-let gMemes;
+let gMemes = [];
 
 function getMemes() {
     let memes = loadFromStorage(STORAGE_KEY);

@@ -243,6 +243,7 @@ function saveMeme() {
     let image = gElCanvas.toDataURL(`image/png`);
     gMeme.url = image;
     let savedMeme = JSON.parse(JSON.stringify(gMeme));
+    console.log(savedMeme);
     gMemes.unshift(savedMeme);
     saveToStorage(STORAGE_KEY, gMemes);
 }
